@@ -370,4 +370,29 @@ class social_chat
 
 		return (int) $message;
 	}
+	/**
+	 * Delete message chat
+	 *
+	 * @param int $post
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function message_remove($message)
+	{
+		
+		$sql = 'DELETE FROM '.$this->pgsocial_chat." WHERE chat_id = $message";
+		$this->db->sql_query($sql);
+		
+		
+		
+		$this->template->assign_vars(array(
+			'ACTION'	=> $sql,
+		));
+		
+		
+		return $this->helper->render('pg_social_chatmessage.html', '');
+		
+		
+		
+		
+	}
 }
