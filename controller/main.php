@@ -192,6 +192,9 @@ class main
 					case 'message_read':
 						$this->social_chat->message_read($this->request->variable('person', ''));
 					break;
+					case 'message_remove':
+						return $this->social_chat->message_remove($this->request->variable('message', ''));
+					break;	
 					case 'album_action':
 						return $this->social_photo->album_action($this->request->variable('element', 0), $this->request->variable('action', ''), $this->request->variable('value', ''));
 					break;
