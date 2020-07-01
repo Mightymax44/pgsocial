@@ -258,4 +258,32 @@
 			}
 		});
 	}
+	
+	//DELETE chat message
+		$(document).on('click', '.pg_social_chat_message .chat_message_remove', function() {
+			if (confirm(useLang['ARE_YOU_SURE'])) {
+				chat_message_remove($(this).parent().parent() .attr('data-message'));
+				
+			}
+		});
+	
+	function chat_message_remove(message) {
+		var fdata = new FormData();
+		fdata.append('mode', 'message_remove');
+		fdata.append('message', message);
+		$.ajax({
+			type: 'POST',
+			url: root,
+			data: fdata,
+			contentType: false,
+			processData: false,
+			success: function(data) {
+				chat_messageLoad(person, 'seguel');
+				pgsocial_chat_check();
+				
+			
+				
+			}
+		});
+	}
 })(jQuery);
