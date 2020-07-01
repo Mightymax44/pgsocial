@@ -259,7 +259,7 @@ class social_chat
 		{
 			$ifright = ($row['user_id'] == $this->user->data['user_id']) ? 1 : 0; //$this->message_read();
 
-			$message = generate_text_for_display($row['chat_text'], $row['bbcode_uid'], $row['bbcode_bitfield'], $row['bbcode_options']);
+			$message = generate_text_for_display($row['message'], $row['bbcode_uid'], $row['bbcode_bitfield'], $row['bbcode_options']);
 			
 			//$row['chat_text'] .= $this->pg_social_helper->extra_text($row['chat_text']);
 
