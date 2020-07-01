@@ -307,6 +307,7 @@ class post_status
 			break;
 		}
 		$msg .= $this->social_tag->show_tag($msg);
+		$msg .= $this->pg_social_helper->extra_text($row['message']);
 		$msg .= generate_text_for_display($row['message'], $row['bbcode_uid'], $row['bbcode_bitfield'], $row['bbcode_options']);
 		switch ($row['post_type'])
 		{
