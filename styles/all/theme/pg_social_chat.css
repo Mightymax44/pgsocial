@@ -355,6 +355,7 @@ body {
 	padding: 10px;
 	border: 0;
 	color: #fff;
+	font-size: 12px;
 }
 
 #pgsocial_chat .pgsocial_chat ul.pg_social_chat_messages li.pg_social_chat_message.right .pg_social_chat_message_text a {
