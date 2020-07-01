@@ -442,6 +442,68 @@ class helper
 		return $array;
 	}
 	
+		/* EXTRA OF ACTIVITY */
+	public function extra_text($text)
+	{
+		$a = '';
+		
+		if ($a == '')
+		{
+			$a .= $this->website_embed($text);
+		}
+		return $a;
+	}
+		
+	/* EMBED LINK FOR ACTIVITY OR MESSAGES CHAT */
+	public function website_embed($text)
+	{
+		$return = $title = $description = '';
+		if ((strstr($text, 'http') !== false) || (strstr($text, 'https') !== false))
+		{
+			$domain = strstr($text, 'http');
+			$domain = explode('">', $domain);
+			$domain = explode('<', $domain[0]);
+			$domain = explode(';', $domain[0]);
+
+			if ($domain[0])
+			{
+				$url = $domain[0];
+				$site_domain = parse_url($domain[0]);
+				$metatagarray = @get_meta_tags($url);
+				if($metatagarray !== false)
+				{
+					if (array_key_exists('title', $metatagarray))
+					{
+						$title = $metatagarray['title'];
+					}
+					if (array_key_exists('description', $metatagarray))
+					{
+						$description = $metatagarray['description'];
+					}
+					$screen = '<a href="'.$domain[0].'" class="post_status_site" target="_blank">
+						<div class="post_status_site_content">
+							<div class="post_status_site_title_domain">'.$site_domain['host'].'<img class="post_status_site_title_domain_favicon" src="https://www.google.com/s2/favicons?domain=http://'.$site_domain['host'].'" /></div>';
+					if ($title)
+					{
+						$screen .= '<h6 class="post_status_site_title">'.$title.'</h6>';
+					}
+					if ($description)
+					{
+						$screen .= '<div class="post_status_description">'.$description.'</div>';
+					}
+					$screen .= '</div>
+					</a>';
+					$return = $screen;
+				}
+				else
+				{
+					$return = $text;
+				}
+			}
+		}
+		return $return;
+	}	
+	
 	/**
 	 * Return array for save text in database
 	 *
