@@ -534,7 +534,7 @@ class helper
 		}
 		
 		return array(
-			$m			=> $message,
+			'message'		=> $message,
 			'bbcode_bitfield'	=> $bitfield,
 			'bbcode_uid'		=> $uid,
 			'bbcode_options'	=> $options,
